@@ -1,0 +1,92 @@
+\documentclass{amsart}
+\usepackage{amsthm}
+\title{Homework 3}
+\author{Nathan Weizenbaum}
+\newtheorem{thm}{Theorem}
+\newcommand{\gen}[1]{\left<#1\right>}
+\newcommand{\inv}{^{-1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cg}{\mathbb{S}^1}
+\newcommand{\nsubgrp}{\triangleleft}
+\newcommand{\nsubgrpeq}{\trianglelefteq}
+\newcommand{\iso}{\cong}
+
+\begin{document}
+\maketitle
+
+\begin{thm}
+  Suppose $G$ is a group where every element has order at most 2.
+  Then $G$ is abelian.
+\end{thm}
+
+\begin{proof}
+  For any element $a \in G$, $\gen{a}$ contains $a$, $a\inv$, and $a \cdot a\inv = e$.
+  This means that either $a = a\inv$ or $a = e$.
+  Thus for any $a, b \in G$, either $ab = e$ or $ab = (ab)\inv$.
+  In the former case, clearly $a = b\inv$ and so $ab = e = ba$.
+  In the latter, if $a = e$, then $ab = eb = b = be = ba$ (similarly if $b = e$).
+  Otherwise $a = a\inv$ and $b = b\inv$, so
+  \begin{align*}
+    ab &= (ab)\inv\\
+    abab &= e\\
+    aba &= b\\
+    ba &= ab.
+  \end{align*}
+\end{proof}
+
+\begin{thm}
+  $\Z \nsubgrp \R$ under addition.
+\end{thm}
+
+\begin{proof}
+  For any $x \in \R$ and any $n \in \Z$,
+  $x + n - x = x - x + n = n \in \Z$,
+  so $x\Z x\inv \subseteq \Z$ and thus $Z \nsubgrp \R$.
+\end{proof}
+
+\begin{thm}
+  Let $\cg = \{z = a + bi \in \C : |z|^2 = a^2 + b^2 = 1\}$.
+  Then $\cg$ is a group under complex multiplication.
+\end{thm}
+
+\begin{proof}
+  We show this by showing that $\cg < \C$.
+  Consider any $z_1, z_2 \in \cg$.
+  \begin{align*}
+    |z_1z_2|^2
+    &= |a_1a_2 + a_1b_2i + a_2b_1i - b_1b_2|^2\\
+    &= |a_1a_2 - b_1b_2 + (a_1b_2 + a_2b_1)i|^2\\
+    &= (a_1a_2 - b_1b_2)^2 + (a_1b_2 + a_2b_1)^2\\
+    &= a_1^2a_2^2 - 2a_1a_2b_1b_2 + b_1^2b_2^2 + a_1^2b_2^2 + 2a_1a_2b_1b_2 + a_2^2b_1^2\\
+    &= a_1^2a_2^2 + b_1^2b_2^2 + a_1^2b_2^2 + a_2^2b_1^2\\
+    &= (a_1^2 + b_1^2)a_2^2 + (a_1^2 + b_1^1)b_2^2\\
+    &= a_2^2 + b_2^2 = 1,
+  \end{align*}
+  so $z_1z_2 \in \cg$.
+  In addition, for any $z \in \cg$, $zz\inv = aa' + ba' i + ab' i - bb'$.
+  Thus,
+  \begin{align*}
+    1 = |zz\inv|^2
+    &= (aa' - bb')^2 + (ba' + ab')^2\\
+    &= a^2a'^2 - 2aa'bb' + b^2b'^2 + b^2a'^2 + 2aa'bb' + a^2b'^2\\
+    &= a^2a'^2 + b^2b'^2 + b^2a'^2 + a^2b'^2\\
+    &= (a^2 + b^2)a'^2 + (a^2 + b^2)b'^2\\
+    &= a'^2 + b'^2,
+  \end{align*}
+  so $z\inv \in \cg$.
+  Thus $\cg < \C$ and so is a group under complex multiplication.
+\end{proof}
+
+\begin{thm}
+  $\R/\Z \iso \cg$ for $\R$ and $\Z$ under addition.
+\end{thm}
+
+\begin{proof}
+  It's easy to find a bijection $\phi : \R/\Z \to \cg$:
+  $\phi(x\Z) = \sin(2\pi x) + \cos(2\pi x)$.
+  Since 
+\end{proof}
+
+\end{document}
